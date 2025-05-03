@@ -18,7 +18,7 @@ import { Navigate } from "react-router";
 
 function App() {
 
-  const {authData, isLoading, error } = useQuery({
+  const {data: authData, isLoading, error } = useQuery({
     queryKey: ["authUser"],
     queryFn: async () => {
       const res = await axiosInstance.get("/auth/me");
