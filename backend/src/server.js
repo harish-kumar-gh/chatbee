@@ -7,6 +7,8 @@ import userRoutes from "./routes/user.route.js"
 import chatRoutes from "./routes/chat.route.js"
 import { connectDB } from "./lib/db.js";
 
+import cors from "cors";    
+
 dotenv.config()
 
 const app = express()
@@ -16,6 +18,11 @@ const PORT = process.env.PORT
 // app.get("/api/auth/signup", (req, res) => {
 //     res.send("SignUp Route");
 // })
+
+app.use(cors({
+    origin: "http://localhost:5173", // frontend url
+    credentials: true, // allows us to send cookies from frontend to backend
+})) // allows us to access the backend from the frontend
 
 app.use(express.json()); // takes the req in json format
 app.use(cookieParser()); // allows us the access of the cookies in req
